@@ -1,0 +1,6 @@
+servPort = 
+dbip = 
+dbPort = 
+dbName = 
+dbUser = 
+dbPassWord = 
