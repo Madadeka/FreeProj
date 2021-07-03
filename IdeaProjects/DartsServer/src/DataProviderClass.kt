@@ -3,82 +3,6 @@ import com.google.gson.Gson
 import java.net.ServerSocket
 import java.net.Socket
 import java.nio.charset.Charset
-import java.util.*
-
-
-class tConnection(var sock: Socket){
-//    lateinit var rTime: Date
-
-    private fun closeConnection(){
-        if (this.sock != null && !this.sock.isClosed()) {
-            try {
-                this.sock.close()
-            } catch (ex: Exception) {
-                print("Невозможно закрыть сокет: " + ex.printStackTrace())
-            } finally {
-                //
-            }
-        }
-        //
-    }
-
-    fun sendData(data: ByteArray?) {
-        if (this.sock == null || this.sock.isClosed()) {
-            print("Невозможно отправить данные. Сокет не создан или закрыт")
-        }
-        try {
-            this.sock.getOutputStream().write(data)
-            this.sock.getOutputStream().flush()
-        } catch (ex: Exception) {
-            print("Невозможно отправить данные: " + ex.printStackTrace())
-        }
-    }
-
-    fun readData(): String {
-        var str = ""
-        if (this.sock == null || this.sock.isClosed()) {
-            print("Невозможно считать данные. Сокет не создан или закрыт")
-        }
-        val reader = Scanner(this.sock.getInputStream())
-        try {
-            str += reader.nextLine()
-        }
-        catch (ex: Exception) {
-            print("Невозможно считать данные: " + ex.printStackTrace())
-        }
-        return str
-    }
-
-}
-
-class tWorkThread(val con: tConnection): Thread(){
-    //    private var conList = mutableListOf<tConnection>()
-//    private var isBusy = BusyFlag()
-    private var isRunning: Boolean = false
-
-//    fun addConnection(con: tConnection){
-//        synchronized(isBusy){
-//            this.conList.add(con)
-//        }
-//    }
-
-//    fun removeConnection(con: tConnection){
-//        synchronized(isBusy){
-////            con.fChannal.close()
-//            this.conList.remove(con)
-//        }
-//    }
-
-    @Override
-    override fun run() {
-        while (isRunning){
-            if ((con.sock != null) and (!con.sock.isClosed)){
-
-            }
-        }
-
-    }
-}
 
 /**
  *  Класс tDataProvider - сервер для подключения клиентов и обработки запросов от них
@@ -86,19 +10,19 @@ class tWorkThread(val con: tConnection): Thread(){
  *  У класса есть объект для работы с базой данных PostgreSQL
  */
 
-class tDataProvider(settings: providerSettings) {
+class DataProvider(settings: ProviderSettings) {
     var fIsRunning: Boolean = false
     private  val fServerPort = settings.servPort
     private lateinit var fServer: ServerSocket
-    private lateinit var conList: MutableList<tConnection>
-    private val dbConnection = TPostgreSQLConnection(
+    private lateinit var conList: MutableList<Connection>
+    private val dbConnection = PostgreSQLConnection(
         settings.dbip,
         settings.dbPort,
         settings.dbName,
         settings.dbUser,
         settings.dbPassWord)
 
-    private fun requestProcess(RequestString: String, con: tConnection) {
+    private fun requestProcess(RequestString: String, con: Connection) {
         when (RequestString){
 
             "SaveLiteGame" -> {
@@ -118,12 +42,12 @@ class tDataProvider(settings: providerSettings) {
                 getLiteGamesWithPlayers(con)
             }
 
-            else -> con.sock.close() //TODO:
+            else -> con.closeConnection()
 
         }
     }
     //накапливаю статистику, перевожу все в одну строку, разделитель - "01010", пересылаю все одним пакетом
-    private fun getAllFromGames(con: tConnection){
+    private fun getAllFromGames(con: Connection){
         try {
             var conRequest: String = "IDWait" + "\n"
             con.sendData(conRequest.toByteArray(Charset.defaultCharset()))
@@ -148,7 +72,7 @@ class tDataProvider(settings: providerSettings) {
         }
     }
 
-    private fun getLiteGamesWithPlayer(con: tConnection){
+    private fun getLiteGamesWithPlayer(con: Connection){
         try {
             var conRequest: String = "IDWait" + "\n"
             con.sendData(conRequest.toByteArray(Charset.defaultCharset()))
@@ -173,7 +97,7 @@ class tDataProvider(settings: providerSettings) {
         }
     }
 
-    private fun saveLiteGame(con: tConnection){
+    private fun saveLiteGame(con: Connection){
         try {
             var conRequest: String = "IDWait" + "\n"
             con.sendData(conRequest.toByteArray(Charset.defaultCharset()))
@@ -182,7 +106,7 @@ class tDataProvider(settings: providerSettings) {
             if (conRequest != "") {
                 println("string in: $conRequest")
                 val JSON = Gson()
-                val tempGame = JSON.fromJson(conRequest,tGame::class.java)
+                val tempGame = JSON.fromJson(conRequest,Game::class.java)
                 println("")
                 println(tempGame.id.toString())
                 println("${tempGame.player1}: ${tempGame.Result1}")
@@ -201,7 +125,7 @@ class tDataProvider(settings: providerSettings) {
         }
     }
 
-    private fun getLiteGamesWithPlayers(con: tConnection){
+    private fun getLiteGamesWithPlayers(con: Connection){
         try {
             var conRequest: String = "IDWait" + "\n"
             con.sendData(conRequest.toByteArray(Charset.defaultCharset()))
@@ -253,14 +177,14 @@ class tDataProvider(settings: providerSettings) {
 
             if (client != null){
                 println("got new connection...\n ip: ${client.inetAddress} port: ${client.port}")
-                val tempConnection = tConnection(client)
+                val tempConnection = Connection(client)
                 conList = mutableListOf()
                 conList.add(tempConnection)
                 println(conList.count().toString())
             }
             Thread.sleep(1)
             //
-            for (con: tConnection in conList){
+            for (con: Connection in conList){
 
                 if (con.sock == null){
                     conList.remove(con)

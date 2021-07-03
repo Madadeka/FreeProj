@@ -7,11 +7,12 @@ import java.sql.SQLException
  * Класс TPostgreSQLConnection служит для подключения к БД PostgreSQL и обработки запросов
  * класс хранит ip- адрес, порт бд, имя бд, пользователя и пароль
  */
-class TPostgreSQLConnection(private val ip: String,
-                            private val port: String,
-                            private val db: String,
-                            private val user: String,
-                            private val pass: String) {
+
+class PostgreSQLConnection(private val ip: String,
+                           private val port: String,
+                           private val db: String,
+                           private val user: String,
+                           private val pass: String) {
 
     private var conn: Connection? = null
 
@@ -22,10 +23,10 @@ class TPostgreSQLConnection(private val ip: String,
         return query
     }
 
-    fun findUserInTableByName(name: String): person {
+    fun findUserInTableByName(name: String): Person {
         dbConnect()
         println("send get person in users...")
-        val tempPerson = person()
+        val tempPerson = Person()
         try {
             val qStr = "SELECT * FROM testusers where username = '$name';"
             val query = queryExecute(qStr)
@@ -52,9 +53,9 @@ class TPostgreSQLConnection(private val ip: String,
 
     }
 
-    fun getAllFromUsers(): List<person> {
+    fun getAllFromUsers(): List<Person> {
         dbConnect()
-        val tempList = mutableListOf<person>()
+        val tempList = mutableListOf<Person>()
         try {
             println("send get all in users...")
             val state = conn!!.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
@@ -63,7 +64,7 @@ class TPostgreSQLConnection(private val ip: String,
 
 
             do {
-                val tempPerson = person()
+                val tempPerson = Person()
                 tempPerson.name = query.getString("username")
                 tempPerson.pass = query.getString("pass")
                 tempList.add(tempPerson)
@@ -83,6 +84,7 @@ class TPostgreSQLConnection(private val ip: String,
         return tempList
     }
 
+    //тестовый метод
     fun getAllFields() {
         dbConnect()
         println("send get all in users...")
@@ -120,6 +122,10 @@ class TPostgreSQLConnection(private val ip: String,
             val connString = "jdbc:postgresql://$ip:$port/$db"
             conn = DriverManager.getConnection(connString, user, pass)
         }
+        catch (ex: ClassNotFoundException){
+            print("No PostgreSQL JDBC Driver found")
+            ex.printStackTrace()
+        }
         catch (ex: SQLException) {
             // handle any errors
             ex.printStackTrace()
@@ -156,7 +162,7 @@ class TPostgreSQLConnection(private val ip: String,
                 "player2 varchar(30)," +
                 "Result2 Int" +
                 ");"
-        state.executeQuery(sqlString)
+        state.executeUpdate(sqlString)
         dbDisconnect()
     }
 
@@ -168,7 +174,7 @@ class TPostgreSQLConnection(private val ip: String,
                 "(gameData, player1, Result1, player2, Result2) VALUES " +
                 "(current_date, '$p1', $res1, '$p2', $res2);"
         try {
-            state.executeQuery(sqlString)
+            state.executeUpdate(sqlString)
         }
         catch (ex: SQLException) {
             ex.printStackTrace()
@@ -182,18 +188,18 @@ class TPostgreSQLConnection(private val ip: String,
         dbDisconnect()
     }
 
-    fun getAllFromGames(): List<tGame> {
+    fun getAllFromGames(): List<Game> {
         dbConnect()
-        val tempList = mutableListOf<tGame>()
+        val tempList = mutableListOf<Game>()
         try {
             println("send get all from gamestest...")
             val state = conn!!.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val query = state.executeQuery("SELECT * FROM gamestest;")
             query.first()
             do {
-                val tempGame = tGame()
+                val tempGame = Game()
                 tempGame.id = query.getString("id").toInt()
-                tempGame.date = query.getString("gamedata") ///TODO: тут что-то нужно доделать...
+                tempGame.date = query.getString("gamedata")
                 tempGame.player1 = query.getString("player1")
                 tempGame.Result1 = query.getString("Result1").toInt()
                 tempGame.player2 = query.getString("player2")
@@ -215,18 +221,18 @@ class TPostgreSQLConnection(private val ip: String,
         return tempList
     }
 
-    fun getLiteGameWithPlayer(player: String): List<tGame> {
+    fun getLiteGameWithPlayer(player: String): List<Game> {
         dbConnect()
-        val tempList = mutableListOf<tGame>()
+        val tempList = mutableListOf<Game>()
         try {
             println("send get GameWithPlayer from gamestest...")
             val state = conn!!.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
             val query = state.executeQuery("SELECT * FROM gamestest WHERE player1 = '$player' or player2 = '$player';")
             query.first()
             do {
-                val tempGame = tGame()
+                val tempGame = Game()
                 tempGame.id = query.getString("id").toInt()
-                tempGame.date = query.getString("gamedata") //TODO: тут что-то нужно доделать...
+                tempGame.date = query.getString("gamedata")
                 tempGame.player1 = query.getString("player1")
                 tempGame.Result1 = query.getString("Result1").toInt()
                 tempGame.player2 = query.getString("player2")
@@ -248,9 +254,9 @@ class TPostgreSQLConnection(private val ip: String,
         return tempList
     }
 
-    fun getLiteGameWithPlayers(player1: String, player2: String): List<tGame> {
+    fun getLiteGameWithPlayers(player1: String, player2: String): List<Game> {
         dbConnect()
-        val tempList = mutableListOf<tGame>()
+        val tempList = mutableListOf<Game>()
         try {
             println("send get GameWithPlayers from gamestest...")
             val state = conn!!.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)
@@ -258,9 +264,9 @@ class TPostgreSQLConnection(private val ip: String,
                     "(player1 = '$player2' and player2 = '$player1') ;")
             query.first()
             do {
-                val tempGame = tGame()
+                val tempGame = Game()
                 tempGame.id = query.getString("id").toInt()
-                tempGame.date = query.getString("gamedata") //TODO: тут что-то нужно доделать...
+                tempGame.date = query.getString("gamedata")
                 tempGame.player1 = query.getString("player1")
                 tempGame.Result1 = query.getString("Result1").toInt()
                 tempGame.player2 = query.getString("player2")

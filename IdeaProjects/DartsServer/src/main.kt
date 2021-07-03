@@ -1,8 +1,8 @@
 fun main(args: Array<String>) {
-    val settings = providerSettings()
+    val settings = ProviderSettings()
     if (settings.getSettingsFromFile("E:\\providerSettings.txt")){
         print(settings.toStr())
-        val provider = tDataProvider(settings)
+        val provider = DataProvider(settings)
         provider.addPort()
     }
 }

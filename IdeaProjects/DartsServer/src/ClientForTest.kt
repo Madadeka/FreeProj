@@ -42,7 +42,7 @@ fun myWriteSocket(soc: Socket, str: String) {
     }
 }
 
-fun saveLiteGame(clientSoc: Socket ,game: tGame){
+fun saveLiteGame(clientSoc: Socket ,game: Game){
     var str = "SaveLiteGame"
     myWriteSocket(clientSoc, str)
     println("string out: $str")
@@ -60,9 +60,8 @@ fun saveLiteGame(clientSoc: Socket ,game: tGame){
     }
 }
 
-//TODO: переделать - принимать по одному tGame пока не "end"
-fun getAllGames(clientSoc: Socket): List<tGame>{
-    var games = mutableListOf<tGame>()
+fun getAllGames(clientSoc: Socket): List<Game>{
+    var games = mutableListOf<Game>()
     var str = "GetAllFromGames"
     myWriteSocket(clientSoc, str)
     println("string out: $str")
@@ -79,7 +78,7 @@ fun getAllGames(clientSoc: Socket): List<tGame>{
         for (str in strs){
             if (str != ""){
                 val JSON = Gson()
-                val game = JSON.fromJson(str, tGame::class.java)
+                val game = JSON.fromJson(str, Game::class.java)
                 games.add(game)
             }
         }
@@ -87,9 +86,8 @@ fun getAllGames(clientSoc: Socket): List<tGame>{
     return games
 }
 
-//TODO: переделать - принимать по одному tGame пока не "end"
-fun getLiteGamesWithPlayer(clientSoc: Socket, player: String): List<tGame>{
-    var games = mutableListOf<tGame>()
+fun getLiteGamesWithPlayer(clientSoc: Socket, player: String): List<Game>{
+    var games = mutableListOf<Game>()
     var str = "GetLiteGamesWithPlayer"
     myWriteSocket(clientSoc, str)
     println("string out: $str")
@@ -106,7 +104,7 @@ fun getLiteGamesWithPlayer(clientSoc: Socket, player: String): List<tGame>{
         for (str in strs){
             if (str != ""){
                 val JSON = Gson()
-                val game = JSON.fromJson(str, tGame::class.java)
+                val game = JSON.fromJson(str, Game::class.java)
                 games.add(game)
             }
         }
@@ -115,8 +113,8 @@ fun getLiteGamesWithPlayer(clientSoc: Socket, player: String): List<tGame>{
 }
 
 //TODO: сделать ветку если пришло "none"
-fun getLiteGamesWithPlayers(clientSoc: Socket, player1: String, player2: String): List<tGame>{
-    var games = mutableListOf<tGame>()
+fun getLiteGamesWithPlayers(clientSoc: Socket, player1: String, player2: String): List<Game>{
+    var games = mutableListOf<Game>()
     var str = "GetLiteGamesWithPlayers"
     myWriteSocket(clientSoc, str)
     println("string out: $str")
@@ -133,7 +131,7 @@ fun getLiteGamesWithPlayers(clientSoc: Socket, player1: String, player2: String)
         for (str in strs){
             if (str != ""){
                 val JSON = Gson()
-                val game = JSON.fromJson(str, tGame::class.java)
+                val game = JSON.fromJson(str, Game::class.java)
                 games.add(game)
             }
         }
