@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FilmCatalogIV</string>
+    <string name="fragment_image">fragment image</string>
+    <string name="search_hint_str">Поиск по названию фильма</string>
+    <string name="request_error">Нам не удалось обработать ваш запрос. Попробуйте еще раз</string>
+
+</resources>
