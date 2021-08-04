@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.308,=E:\ProjectsD7\testGDI2\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.775,E:\ProjectsD7\testGDI2\Unit2.pas=E:\ProjectsD7\testGDI2\TBaseRectangleUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.439,=E:\ProjectsD7\testGDI2\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.011,E:\ProjectsD7\testGDI3\Project1.dproj=E:\ProjectsD7\testGDI2\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.546,C:\Users\Maks\Documents\RAD Studio\Projects\Project1.dproj=E:\ProjectsD7\testGDI2\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.620,E:\ProjectsD7\testGDI2\Unit2.pas=E:\ProjectsD7\testGDI2\BlurShadowUnit.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.698,=E:\ProjectsD7\testGDI2\GdiPlus.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.976,E:\ProjectsD7\testGDI2\Project1.dproj=E:\ProjectsD7\testGDI3\Project1.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.429,C:\Users\Maks\Documents\RAD Studio\Projects\Unit1.dfm=E:\ProjectsD7\testGDI2\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.796,=E:\ProjectsD7\testGDI2\GdiPlusHelpers.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.429,C:\Users\Maks\Documents\RAD Studio\Projects\Unit1.pas=E:\ProjectsD7\testGDI2\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.837,=C:\Users\Maks\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
