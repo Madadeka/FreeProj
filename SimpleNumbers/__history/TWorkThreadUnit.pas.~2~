@@ -1,0 +1,75 @@
+unit TWorkThreadUnit;
+
+interface
+
+uses
+  System.Classes,
+  Winapi.WinSock,
+  System.SysUtils,
+  System.DateUtils,
+  SyncObjs,
+  Generics.Collections;
+
+type
+  TGetNumber = function: Integer of Object;
+  TWriteNumber = procedure(num: Integer) of Object;
+
+  TWorkThread = class(TThread)
+  private
+    FTreadID: Integer;
+    FIsRunning: Boolean;
+
+    procedure SetThreadID(n: Integer);
+    procedure SetIsRunning(value: Boolean);
+
+  public
+    tf: TextFile;
+    Fcs: TCriticalSection;
+    numq: TQueue<Integer>;
+
+    WriteNumber: TWriteNumber;
+    GetNumber : TGetNumber;
+
+    property ID: Integer read FTreadID write SetThreadID;
+    property IsRunning: Boolean read FIsRunning write SetIsRunning;
+
+    constructor Create(n: Integer);
+    destructor Destroy(); override;
+
+  protected
+    procedure Execute; override;
+
+  end;
+
+implementation
+
+{ TWorkThread }
+
+constructor TWorkThread.Create(n: Integer);
+begin
+
+end;
+
+destructor TWorkThread.Destroy;
+begin
+
+  inherited;
+end;
+
+procedure TWorkThread.Execute;
+begin
+  inherited;
+
+end;
+
+procedure TWorkThread.SetIsRunning(value: Boolean);
+begin
+
+end;
+
+procedure TWorkThread.SetThreadID(n: Integer);
+begin
+
+end;
+
+end.
