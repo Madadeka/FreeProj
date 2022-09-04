@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.786,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.260,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.792,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.pas=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\TFrmStatistU.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.552,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\TfrmAddU.dfm=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.409,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\TFrmOperatorU.pas=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.852,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.792,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.dfm=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\TFrmStatistU.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.552,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\TfrmAddU.pas=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.409,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\TFrmOperatorU.dfm=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.413,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\DBReaderU.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.603,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\testApp5\about.pas=</Transaction>
+  </Transactions>
+</BorlandProject>
