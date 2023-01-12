@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.124,=C:\Users\Maksim\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.158,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022.08.05 18:08:50.970,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022.08.07 19:41:49.455,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\MainU.pas=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022.08.07 19:41:49.455,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\MainU.dfm=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022.08.07 19:42:07.440,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\zdravServ.dproj=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022.08.07 19:52:04.051,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\Unit1.pas</Transaction>
+    <Transaction>2022.08.07 19:52:26.010,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\LoggerU.pas=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\Unit1.pas</Transaction>
+    <Transaction>2022.08.08 01:36:25.339,=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\Unit1.pas</Transaction>
+    <Transaction>2022.08.08 01:37:00.101,C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\DBReaderU.pas=C:\Users\Maksim\OneDrive\Документы\Embarcadero\Studio\Projects\zdravServ\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>
